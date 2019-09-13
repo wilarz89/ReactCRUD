@@ -3,20 +3,13 @@ import AddUserForm from './forms/AddUserForm'
 import EditUserForm from './forms/EditUserForm'
 import UserTable from './tables/UserTable'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
-
+import './styles.css';
 const App = () => {
-	// Data
-	const usersData = [
-		{ id: 1, name: 'Wilson', username: 'wilarz89' },
-		{ id: 2, name: 'Testing', username: 'testaccount' },
-		{ id: 3, name: 'Pruebs', username: 'pruebas.1.1' },
-	]
 
 	const initialFormState = { id: null, name: '', username: '' }
 
 	// Setting state
-	const [ users, setUsers ] = useState(usersData)
+	const [ users, setUsers ] = useState()
 	const [ currentUser, setCurrentUser ] = useState(initialFormState)
 	const [ editing, setEditing ] = useState(false)
 
@@ -68,7 +61,9 @@ const App = () => {
 				</div>
 				<div className="flex-large">
 					<h2>View users</h2>
-					<UserTable users={users} editRow={editRow} deleteUser={deleteUser} />
+          {/* <UserTable users={users} editRow={editRow} deleteUser={deleteUser} /> */}
+          <UserTable/>
+
 				</div>
 			</div>
 		</div>
