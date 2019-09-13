@@ -9,6 +9,15 @@ const usersData = [
     { id: 3, name: 'Pruebs', username: 'pruebas.1.1' },
 ];
 
+	// const deleteUser = id => {
+	// 	setEditing(false)
+
+	// 	setUsers(users.filter(user => user.id !== id))
+	// }
+
+	// const updateUser = (id, updatedUser) => {
+	// 	setEditing(false)
+
 const columns = [
     {
         
@@ -28,6 +37,23 @@ const columns = [
     accessor: 'username',
     style: { whiteSpace: 'unset' },
     },
+    {
+        Header:'Edit',
+        Cell: row => (
+            <div>
+                {/* <button onClick={() => handleEdit(row.original)}>Edit</button> */}
+            </div>
+        )
+        },
+        {
+        Header:'Delete',
+        Cell: row => (
+            <div>
+            {/* <button onClick={() => handleDelete(row.original)}>Delete</button> */}
+            </div>
+           
+        )
+        },
 ]
 
 const UserTable = props => {
@@ -41,4 +67,4 @@ const UserTable = props => {
     );
 }
 
-export default UserTable
+export default UserTable;
