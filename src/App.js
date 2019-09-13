@@ -1,41 +1,76 @@
-import React, { useState } from 'react'
-import UserTable from './tables/UserTable'
+import React, { useState, Fragment } from 'react'
 import AddUserForm from './forms/AddUserForm'
+import EditUserForm from './forms/EditUserForm'
+import UserTable from './tables/UserTable'
 
 const App = () => {
-  const usersData = [
-    { id: 1, name: 'Wilson', username: 'wilarz89' },
-    { id: 2, name: 'Javier', username: 'jh2kh' },
-    { id: 3, name: 'Lorena', username: 'vlorena' },
-  ]
+	// Data
+	const usersData = [
+		{ id: 1, name: 'Wilson', username: 'wilarz89' },
+		{ id: 2, name: 'Testing', username: 'testaccount' },
+		{ id: 3, name: 'Pruebs', username: 'pruebas.1.1' },
+	]
 
-  const [users, setUsers] = useState(usersData)
+	const initialFormState = { id: null, name: '', username: '' }
 
-  const addUser = user => {
-    user.id = users.length + 1
-    setUsers([...users, user])
-  }
+	// Setting state
+	const [ users, setUsers ] = useState(usersData)
+	const [ currentUser, setCurrentUser ] = useState(initialFormState)
+	const [ editing, setEditing ] = useState(false)
 
-  const deleteUser = id => {
-    setUsers(users.filter(user => user.id !== id))
-  }
+	// CRUD operations
+	const addUser = user => {
+		user.id = users.length + 1
+		setUsers([ ...users, user ])
+	}
 
+	const deleteUser = id => {
+		setEditing(false)
 
-  return (
-    <div className="container">
-      <h1>CRUD App with Hooks</h1>
-      <div className="flex-row">
-        <div className="flex-large">
-          <h2>Add user</h2>
-          <AddUserForm addUser={addUser} />
-        </div>
-        <div className="flex-large">
-          <h2>View users</h2>
-          <UserTable users={users} deleteUser={deleteUser} />
-        </div>
-      </div>
-    </div>
-  )
+		setUsers(users.filter(user => user.id !== id))
+	}
+
+	const updateUser = (id, updatedUser) => {
+		setEditing(false)
+
+		setUsers(users.map(user => (user.id === id ? updatedUser : user)))
+	}
+
+	const editRow = user => {
+		setEditing(true)
+
+		setCurrentUser({ id: user.id, name: user.name, username: user.username })
+	}
+
+	return (
+		<div className="container">
+			<h1>Simple CRUD app</h1>
+			<div className="flex-row">
+				<div className="flex-large">
+					{editing ? (
+						<Fragment>
+							<h2>Edit user</h2>
+							<EditUserForm
+								editing={editing}
+								setEditing={setEditing}
+								currentUser={currentUser}
+								updateUser={updateUser}
+							/>
+						</Fragment>
+					) : (
+						<Fragment>
+							<h2>Add user</h2>
+							<AddUserForm addUser={addUser} />
+						</Fragment>
+					)}
+				</div>
+				<div className="flex-large">
+					<h2>View users</h2>
+					<UserTable users={users} editRow={editRow} deleteUser={deleteUser} />
+				</div>
+			</div>
+		</div>
+	)
 }
 
 export default App
