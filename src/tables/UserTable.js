@@ -1,5 +1,7 @@
 import React from 'react'
 import ReactTable from 'react-table'
+import 'react-table/react-table.css'
+
 
 const usersData = [
     { id: 1, name: 'Wilson', username: 'wilarz89' },
