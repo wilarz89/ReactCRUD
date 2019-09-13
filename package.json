@@ -5,10 +5,12 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "formik": "^1.5.8",
+    "freactal": "^2.0.3",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.1.1"
+    "react-scripts": "3.1.1",
+    "react-table": "^6.10.3"
   },
   "scripts": {
     "start": "react-scripts start",

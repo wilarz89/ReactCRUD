@@ -2,6 +2,8 @@ import React, { useState, Fragment } from 'react'
 import AddUserForm from './forms/AddUserForm'
 import EditUserForm from './forms/EditUserForm'
 import UserTable from './tables/UserTable'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 
 const App = () => {
 	// Data
