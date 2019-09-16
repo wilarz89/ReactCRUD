@@ -44,6 +44,8 @@ const columns = [
             <div>
                 <Router>
                     <Link to="/edit" component={EditUserForm+ usersData.id}>Editar</Link>
+                    <Route path="/edit/:id" component={EditUserForm}/>
+
                 </Router>
                 
             </div>
@@ -53,7 +55,6 @@ const columns = [
         Header:'Delete',
         Cell: row => (
             <div>
-            {/* <button onClick={() => handleDelete(row.original)}>Delete</button> */}
             <button onClick>Delete</button> 
             </div>
            

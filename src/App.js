@@ -1,18 +1,18 @@
 import React, { useState, Fragment } from 'react'
 import AddUserForm from './forms/AddUserForm'
-import EditUserForm from './forms/EditUserForm'
 import UserTable from './tables/UserTable'
 import './styles.css';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import {provideState} from 'freactal'
 
 const App = () => {
 
 	const initialFormState = { id: null, name: '', username: '' }
 
 	// Setting state
-	const [ users, setUsers ] = useState()
-	const [ currentUser, setCurrentUser ] = useState(initialFormState)
-	const [ editing, setEditing ] = useState(false)
+	const [ users, setUsers ] = provideState()
+	const [ currentUser, setCurrentUser ] = provideState(initialFormState)
+	const [ editing, setEditing ] = provideState(false)
 
 	// CRUD operations
 	const addUser = user => {
@@ -43,9 +43,12 @@ const App = () => {
 			<h1>Simple CRUD app</h1>
 			<div className="flex-row">
 				<div className="flex-large">
+        <Fragment>
+							<h2>Add user</h2>
+							<AddUserForm addUser={addUser} />
+						</Fragment>
 		    <Router>
           <Route path="/add" component={AddUserForm}/>
-          <Route path="/edit" component={EditUserForm}/>
         </Router>
 				</div>
 				<div className="flex-large">

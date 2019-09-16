@@ -27,7 +27,7 @@ const EditUserForm = props => {
       <Field type="text" name="name" />
       <label>Username</label>
       <Field type="text" name="username" />
-      <button>Add user</button>
+      <button>Edit user</button>
       <button onClick={() => props.setEditing(false)} className="button muted-button">
         Cancel
       </button>
