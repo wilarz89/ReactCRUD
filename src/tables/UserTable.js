@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactTable from 'react-table'
 import 'react-table/react-table.css'
-
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import EditUserForm from '../forms/EditUserForm'
 
 const usersData = [
     { id: 1, name: 'Wilson', username: 'wilarz89' },
@@ -41,7 +42,10 @@ const columns = [
         Header:'Edit',
         Cell: row => (
             <div>
-                {/* <button onClick={() => handleEdit(row.original)}>Edit</button> */}
+                <Router>
+                    <Link to="/edit" component={EditUserForm+ usersData.id}>Editar</Link>
+                </Router>
+                
             </div>
         )
         },
@@ -50,6 +54,7 @@ const columns = [
         Cell: row => (
             <div>
             {/* <button onClick={() => handleDelete(row.original)}>Delete</button> */}
+            <button onClick>Delete</button> 
             </div>
            
         )
@@ -68,3 +73,4 @@ const UserTable = props => {
 }
 
 export default UserTable;
+

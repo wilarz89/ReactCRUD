@@ -2,8 +2,9 @@ import React, { useState, Fragment } from 'react'
 import AddUserForm from './forms/AddUserForm'
 import EditUserForm from './forms/EditUserForm'
 import UserTable from './tables/UserTable'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './styles.css';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 const App = () => {
 
 	const initialFormState = { id: null, name: '', username: '' }
@@ -42,22 +43,10 @@ const App = () => {
 			<h1>Simple CRUD app</h1>
 			<div className="flex-row">
 				<div className="flex-large">
-					{editing ? (
-						<Fragment>
-							<h2>Edit user</h2>
-							<EditUserForm
-								editing={editing}
-								setEditing={setEditing}
-								currentUser={currentUser}
-								updateUser={updateUser}
-							/>
-						</Fragment>
-					) : (
-						<Fragment>
-							<h2>Add user</h2>
-							<AddUserForm addUser={addUser} />
-						</Fragment>
-					)}
+		    <Router>
+          <Route path="/add" component={AddUserForm}/>
+          <Route path="/edit" component={EditUserForm}/>
+        </Router>
 				</div>
 				<div className="flex-large">
 					<h2>View users</h2>
