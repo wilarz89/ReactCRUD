@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {Formik,Form,Field} from 'formik'
+import {injectState} from 'freactal'
 
 const AddUserForm = props => {
   const initialFormState = { id: null, name: '', username: '' }

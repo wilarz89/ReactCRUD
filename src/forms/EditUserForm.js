@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import {Formik,Form,Field} from 'formik'
+import {injectState} from 'freactal'
 
 
 const EditUserForm = props => {
