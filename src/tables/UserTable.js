@@ -39,7 +39,7 @@ const columns = [
     Cell: row => (
       <div>
         <Router>
-          <Link to="/edit" component={EditUserForm}>
+          <Link to="/edit/:id" component={EditUserForm}>
             Editar
           </Link>
           <Route path="/edit/:id" component={EditUserForm} />
