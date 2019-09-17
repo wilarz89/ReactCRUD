@@ -3,13 +3,11 @@ import ReactTable from "react-table";
 import "react-table/react-table.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import EditUserForm from "../forms/EditUserForm";
-import { wrapComponentWithState,usersData } from "../state";
+import { wrapComponentWithState, usersData } from "../state";
 
-// const deleteUser = id => {
-// 	setEditing(false)
-
-// 	setUsers(users.filter(user => user.id !== id))
-// }
+const deleteUser = id => {
+  // wrapComponentWithState.setUsers(usersData.filter(user => user.id !== id))
+};
 
 // const updateUser = (id, updatedUser) => {
 // 	setEditing(false)
@@ -51,7 +49,7 @@ const columns = [
     Header: "Delete",
     Cell: row => (
       <div>
-        <button onClick>Delete</button>
+        <button onClick={deleteUser}>Delete</button>
       </div>
     )
   }

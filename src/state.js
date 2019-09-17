@@ -16,10 +16,10 @@ export const wrapComponentWithState = provideState({
 });
 
 export const usersData = [
-    { id: 1, name: "Wilson", username: "wilarz89" },
-    { id: 2, name: "Testing", username: "testaccount" },
-    { id: 3, name: "Prueba", username: "pruebas.1.1" }
-  ];
+  { id: 1, name: "Wilson", username: "wilarz89" },
+  { id: 2, name: "Testing", username: "testaccount" },
+  { id: 3, name: "Prueba", username: "pruebas.1.1" }
+];
 // const [ currentUser, setCurrentUser ] = provideState(initialFormState)
 
 // const [ editing, setEditing ] = provideState(false)

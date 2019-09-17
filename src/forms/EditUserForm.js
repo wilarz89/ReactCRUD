@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Formik, Form, Field } from "formik";
 import { injectState } from "freactal";
 import { wrapComponentWithState } from "../state";
@@ -7,13 +7,12 @@ const EditUserForm = injectState(({ state, effects }) => {
   const onSubmit = () => effects.setCurrentUser(state.user);
   const onCLick = () => effects.setEditing(state.edit);
 
-   return (
+  return (
     <Formik
       initialValues={{ name: "", username: "" }}
       onSubmit={event => {
         const handleInputChange = event => {
           const { name, value } = event.target;
-
         };
       }}
     >
@@ -34,4 +33,4 @@ const EditUserForm = injectState(({ state, effects }) => {
   );
 });
 
-export default wrapComponentWithState(EditUserForm);
+export default EditUserForm;

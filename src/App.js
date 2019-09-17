@@ -28,4 +28,4 @@ const App = () => {
   );
 };
 
-export default  wrapComponentWithState(App);
+export default wrapComponentWithState(App);

@@ -1,10 +1,10 @@
-import React, {  } from "react";
+import React from "react";
 import { Formik, Form, Field } from "formik";
 import { injectState } from "freactal";
 import { wrapComponentWithState } from "../state";
 
-const AddUserForm =injectState(({state,effects})=>{
-    const onSubmit=()=>effects.setUsers(state.user);
+const AddUserForm = injectState(({ state, effects }) => {
+  const onSubmit = () => effects.setUsers(state.user);
 
   // CRUD operations
   // const addUser = user => {
@@ -17,7 +17,6 @@ const AddUserForm =injectState(({state,effects})=>{
       onSubmit={event => {
         const handleInputChange = event => {
           const { name, value } = event.target;
-          
         };
       }}
     >
