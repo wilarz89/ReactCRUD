@@ -9,9 +9,9 @@ export const wrapComponentWithState = provideState({
     setUsers: (effects, user) => state =>
       Object.assign({}, state, { users: user }),
     setCurrentUser: (effects, user) => state =>
-      Object.assign({}, state, { users: user }),
-    setEditing: (effects, user) => state =>
-      Object.assign({}, state, { users: user })
+      Object.assign({}, state, { currentUser: user }),
+    setEditing: (effects, edit) => state =>
+      Object.assign({}, state, { editing: edit })
   }
 });
 // const [ currentUser, setCurrentUser ] = provideState(initialFormState)

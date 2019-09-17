@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Formik, Form, Field } from "formik";
 import { injectState } from "freactal";
+import { wrapComponentWithState } from "../state";
 
-const EditUserForm = props => {
-  const [user, setUser] = useState(props.currentUser);
+const EditUserForm = injectState(({ state, effects }) => {
+  const onSubmit = () => effects.setCurrentUser(state.user);
+  const onCLick = () => effects.setEditing(state.edit);
 
-  useEffect(() => {
-    setUser(props.currentUser);
-  }, [props]);
-  return (
+   return (
     <Formik
       initialValues={{ name: "", username: "" }}
       onSubmit={event => {
         const handleInputChange = event => {
           const { name, value } = event.target;
 
-          setUser({ ...user, [name]: value });
         };
       }}
     >
@@ -26,7 +24,7 @@ const EditUserForm = props => {
         <Field type="text" name="username" />
         <button>Edit user</button>
         <button
-          onClick={() => props.setEditing(false)}
+          onClick={() => effects.setEditing(false)}
           className="button muted-button"
         >
           Cancel
@@ -34,6 +32,6 @@ const EditUserForm = props => {
       </Form>
     </Formik>
   );
-};
+});
 
-export default EditUserForm;
+export default wrapComponentWithState(EditUserForm);

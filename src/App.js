@@ -21,7 +21,6 @@ const App = () => {
         </div>
         <div className="flex-large">
           <h2>View users</h2>
-          {/* <UserTable users={users} editRow={editRow} deleteUser={deleteUser} /> */}
           <UserTable />
         </div>
       </div>
@@ -29,4 +28,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default  wrapComponentWithState(App);

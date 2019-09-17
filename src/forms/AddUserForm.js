@@ -1,25 +1,23 @@
-import React, { useState } from "react";
+import React, {  } from "react";
 import { Formik, Form, Field } from "formik";
 import { injectState } from "freactal";
+import { wrapComponentWithState } from "../state";
 
-const AddUserForm = props => {
-  const initialFormState = { id: null, name: "", username: "" };
-  const [user, setUser] = useState(initialFormState);
+const AddUserForm =injectState(({state,effects})=>{
+    const onSubmit=()=>effects.setUsers(state.user);
 
   // CRUD operations
   // const addUser = user => {
   // 	user.id = users.length + 1
   // 	setUsers([ ...users, user ])
   // }
-
   return (
     <Formik
-      initialValues={{ name: "", username: "" }}
+      initialValues={{ name: "name", username: "user" }}
       onSubmit={event => {
         const handleInputChange = event => {
           const { name, value } = event.target;
-
-          setUser({ ...user, [name]: value });
+          
         };
       }}
     >
@@ -32,6 +30,6 @@ const AddUserForm = props => {
       </Form>
     </Formik>
   );
-};
+});
 
-export default AddUserForm;
+export default wrapComponentWithState(AddUserForm);
