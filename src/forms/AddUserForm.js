@@ -32,4 +32,4 @@ const AddUserForm =injectState(({state,effects})=>{
   );
 });
 
-export default wrapComponentWithState(AddUserForm);
+export default AddUserForm;

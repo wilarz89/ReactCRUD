@@ -3,13 +3,7 @@ import ReactTable from "react-table";
 import "react-table/react-table.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import EditUserForm from "../forms/EditUserForm";
-import { wrapComponentWithState } from "../state";
-
-const usersData = [
-  { id: 1, name: "Wilson", username: "wilarz89" },
-  { id: 2, name: "Testing", username: "testaccount" },
-  { id: 3, name: "Prueba", username: "pruebas.1.1" }
-];
+import { wrapComponentWithState,usersData } from "../state";
 
 // const deleteUser = id => {
 // 	setEditing(false)
