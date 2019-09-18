@@ -10,25 +10,28 @@ export const EditUserForm = injectState(({ state, effects }) => {
   return (
     <Formik
       initialValues={{ name: "", username: "" }}
-      onSubmit={event => {
-        const handleInputChange = event => {
-          const { name, value } = event.target;
+      onSubmit={values => {
+        console.log("submitting", values);
+        // CRUD operations
+        const addUser = usersData => {
+          usersData.id = usersData.length + 1;
         };
       }}
     >
-      <Form>
-        <label>Name</label>
-        <Field type="text" name="name" />
-        <label>Username</label>
-        <Field type="text" name="username" />
-        <button>Edit user</button>
+      {({ handleSubmit, handleChange, values }) => (
+        <Form onSubmit={handleSubmit}>
+          <label>Name</label>
+          <Field type="text" name="name" />
+          <label>Username</label>
+          <Field type="text" name="username" />
+          <button>Edit user</button>
         <button
           onClick={() => effects.setEditing(false)}
           className="button muted-button"
         >
           Cancel
-        </button>
-      </Form>
+        </button>        </Form>
+      )}
     </Formik>
   );
 });

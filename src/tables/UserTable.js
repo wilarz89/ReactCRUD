@@ -7,11 +7,8 @@ import EditUserForm from "../forms/EditUserForm";
 import { wrapComponentWithState, usersData } from "../state";
 
 const deleteUser = id => {
-  wrapComponentWithState.setUsers(usersData.filter(user => user.id !== id))
+  wrapComponentWithState.setUsers(usersData.filter(user => user.id !== id));
 };
-
-// const updateUser = (id, updatedUser) => {
-// 	setEditing(false)
 
 const columns = [
   {
@@ -38,14 +35,13 @@ const columns = [
     Cell: row => (
       <div>
         <Router>
-            <Link to="/edit/:id" className="link">
-              Editar
-            </Link>
+          <Link to="/edit/:id" className="link">
+            Editar
+          </Link>
           <Route exact path="/edit/:id" component={withRouter(EditUserForm)} />
         </Router>
       </div>
     )
-
   },
   {
     Header: "Delete",
