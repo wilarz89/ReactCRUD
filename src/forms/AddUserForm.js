@@ -4,18 +4,15 @@ import { injectState } from "freactal";
 import { wrapComponentWithState, usersData } from "../state";
 
 const AddUserForm = injectState(({ state, effects }) => {
-  const onSubmit = () => effects.setUsers(state.user);
+  const onSubmit = (data) => {
+      console.log(state)
+      return effects.setUsers(data);
+    }
 
   return (
     <Formik
       initialValues={{ name: "", username: "" }}
-      onSubmit={values => {
-        console.log("submitting", values);
-        // CRUD operations
-        const addUser = usersData => {
-          usersData.id = usersData.length + 1;
-        };
-      }}
+      onSubmit={onSubmit}
     >
       {({ handleSubmit, handleChange, values }) => (
         <Form onSubmit={handleSubmit}>

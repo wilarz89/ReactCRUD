@@ -14,7 +14,9 @@ export const EditUserForm = injectState(({ state, effects }) => {
         console.log("submitting", values);
         // CRUD operations
         const addUser = usersData => {
-          usersData.id = usersData.length + 1;
+          let id = usersData.length + 1;
+         let  user={id,values}
+         usersData.push(user)
         };
       }}
     >

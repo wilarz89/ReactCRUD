@@ -6,9 +6,7 @@ import { withRouter } from "react-router-dom";
 import EditUserForm from "../forms/EditUserForm";
 import { wrapComponentWithState, usersData } from "../state";
 
-const deleteUser = id => {
-  wrapComponentWithState.setUsers(usersData.filter(user => user.id !== id));
-};
+
 
 const columns = [
   {
@@ -47,7 +45,7 @@ const columns = [
     Header: "Delete",
     Cell: row => (
       <div>
-        <button onClick={deleteUser}>Delete</button>
+        <button>Delete</button>
       </div>
     )
   }

@@ -4,10 +4,13 @@ import { provideState } from "freactal";
 
 // const [ users, setUsers ] = useState()
 export const wrapComponentWithState = provideState({
-  initialState: () => ({ users: "" }),
+  initialState: () => ({ users: {} }),
   effects: {
-    setUsers: (effects, user) => state =>
-      Object.assign({}, state, { users: user }),
+    setUsers: (effects, user) => state => {
+        console.log('state', state)
+        return Object.assign({}, state, { ...state, users: {...user }})
+    },
+      
     setCurrentUser: (effects, user) => state =>
       Object.assign({}, state, { currentUser: user }),
     setEditing: (effects, edit) => state =>
