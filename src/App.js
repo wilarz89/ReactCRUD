@@ -9,6 +9,7 @@ const App = () => {
   return (
     <div className="container">
       <h1>Simple CRUD app</h1>
+
       <div className="flex-row">
         <div className="flex-large">
           <Router>

@@ -6,8 +6,6 @@ import { withRouter } from "react-router-dom";
 import EditUserForm from "../forms/EditUserForm";
 import { wrapComponentWithState, usersData } from "../state";
 
-
-
 const columns = [
   {
     Header: "Id",
