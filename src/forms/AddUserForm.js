@@ -13,21 +13,22 @@ const AddUserForm = injectState(({ state, effects }) => {
   // }
   return (
     <Formik
-      initialValues={{ name: "name", username: "user" }}
-      onSubmit={event => {
-        const handleInputChange = event => {
-          const { name, value } = event.target;
-        };
+      initialValues={{ name: "", username: "" }}
+      onSubmit={values => {
+          console.log("submitting", values);
       }}
     >
-      <Form>
+        {({ handleSubmit, handleChange, values }) => (
+      <Form onSubmit={handleSubmit}>
         <label>Name</label>
         <Field type="text" name="name" />
         <label>Username</label>
         <Field type="text" name="username" />
         <button>Add new user</button>
       </Form>
+        )}
     </Formik>
+        
   );
 });
 
