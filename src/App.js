@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import AddUserForm from "./forms/AddUserForm";
 import UserTable from "./tables/UserTable";
 import "./styles.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { wrapComponentWithState } from "./state";
 
 const App = () => {
@@ -11,11 +11,13 @@ const App = () => {
       <h1>Simple CRUD app</h1>
       <div className="flex-row">
         <div className="flex-large">
-          <Fragment>
-            <h2>Add user</h2>
-            <AddUserForm />
-          </Fragment>
           <Router>
+            <Fragment>
+              <Link to="/add" className="link">
+                <h2>Add user</h2>
+              </Link>
+            </Fragment>
+
             <Route path="/add" component={AddUserForm} />
           </Router>
         </div>
