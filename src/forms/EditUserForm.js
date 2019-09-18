@@ -3,7 +3,7 @@ import { Formik, Form, Field } from "formik";
 import { injectState } from "freactal";
 import { wrapComponentWithState } from "../state";
 
-const EditUserForm = injectState(({ state, effects }) => {
+export const EditUserForm = injectState(({ state, effects }) => {
   const onSubmit = () => effects.setCurrentUser(state.user);
   const onCLick = () => effects.setEditing(state.edit);
 
