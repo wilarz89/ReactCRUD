@@ -1,34 +1,54 @@
-import React, { Fragment } from "react";
-import AddUserForm from "./forms/AddUserForm";
-import UserTable from "./tables/UserTable";
-import "./styles.css";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { wrapComponentWithState } from "./state";
+import React, { Fragment } from 'react';
+import AddUserForm from './forms/AddUserForm';
+import UserTable from './tables/UserTable';
+import './styles.css';
+import {
+    BrowserRouter as Router,
+    Route,
+    Link,
+    Switch,
+} from 'react-router-dom';
+import { wrapComponentWithState } from './state';
+import EditUserForm from './forms/EditUserForm';
 
 const App = () => {
-  return (
-    <div className="container">
-      <h1>Simple CRUD app</h1>
+    return (
+        <div className="container">
+            <h1>Simple CRUD app</h1>
 
-      <div className="flex-row">
-        <div className="flex-large">
-          <Router>
-            <Fragment>
-              <Link to="/add" className="link">
-                <h2>Add user</h2>
-              </Link>
-            </Fragment>
-
-            <Route path="/add" component={AddUserForm} />
-          </Router>
+            <div className="flex-row">
+                <div className="flex-large">
+                    <Router>
+                        <Fragment>
+                            <Link to="/add" className="link">
+                                <h2>Add user</h2>
+                            </Link>
+                            <div className="flex-large">
+                                <Link to="/list" className="list">
+                                    {' '}
+                                    <h2>View users</h2>
+                                </Link>
+                            </div>
+                        </Fragment>
+                        <Switch>
+                            <Route
+                                path="/add"
+                                component={AddUserForm}
+                            />
+                            <Route
+                                path="/list"
+                                component={UserTable}
+                            />
+                             <Route
+                                path="/edit/:id"
+                                component={EditUserForm}
+                            />
+                        </Switch>
+                    </Router>
+                </div>
+            </div>
         </div>
-        <div className="flex-large">
-          <h2>View users</h2>
-          <UserTable />
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default wrapComponentWithState(App);
