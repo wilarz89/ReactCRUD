@@ -13,8 +13,8 @@ export const wrapComponentWithState = provideState({
     effects: {
         setUsers: (effects, user) => state => {
             console.log('state', state);
-            let usersData1 = { usersData,...state}
-            console.log("=>",usersData1)
+             let data = { usersData,...state}
+            console.log("=>",data)
             return Object.assign({}, state, {
                 ...state,
                 users: { ...user },

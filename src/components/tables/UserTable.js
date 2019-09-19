@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
-import { BrowserRouter as Link } from 'react-router-dom';
-import { wrapComponentWithState, usersData } from '../state';
+import {
+    BrowserRouter as 
+    Router,
+    Link,
+} from 'react-router-dom';
+import { wrapComponentWithState, usersData } from '../../state';
 
 const columns = [
     {

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import AddUserForm from './forms/AddUserForm';
-import UserTable from './tables/UserTable';
+import AddUserForm from './components/forms/AddUserForm';
+import UserTable from './components/tables/UserTable';
 import './styles.css';
 import {
     BrowserRouter as Router,
@@ -9,7 +9,7 @@ import {
     Switch,
 } from 'react-router-dom';
 import { wrapComponentWithState } from './state';
-import EditUserForm from './forms/EditUserForm';
+import EditUserForm from './components/forms/EditUserForm';
 
 const App = () => {
     return (
