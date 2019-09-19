@@ -34,16 +34,11 @@ const columns = [
         Header: 'Edit',
         Cell: row => (
             <div>
-                <Router>
+                <li>
                     <Link to="/edit/:id" className="link">
                         Editar
                     </Link>
-                    <Route
-                        exact
-                        path="/edit/:id"
-                        component={withRouter(EditUserForm)}
-                    />
-                </Router>
+                </li>
             </div>
         ),
     },

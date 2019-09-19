@@ -1,5 +1,11 @@
 import { provideState } from 'freactal';
 
+export let usersData = [
+  { id: 1, name: 'Wilson', username: 'wilarz89' },
+  { id: 2, name: 'Testing', username: 'testaccount' },
+  { id: 3, name: 'Prueba', username: 'pruebas.1.1' },
+];
+
 // Setting state
 
 export const wrapComponentWithState = provideState({
@@ -7,6 +13,8 @@ export const wrapComponentWithState = provideState({
     effects: {
         setUsers: (effects, user) => state => {
             console.log('state', state);
+            let usersData1 = { usersData,...state}
+            console.log("=>",usersData1)
             return Object.assign({}, state, {
                 ...state,
                 users: { ...user },
@@ -25,12 +33,6 @@ export const wrapComponentWithState = provideState({
             Object.assign({}, state, { editing: edit }),
     },
 });
-
-export const usersData = [
-    { id: 1, name: 'Wilson', username: 'wilarz89' },
-    { id: 2, name: 'Testing', username: 'testaccount' },
-    { id: 3, name: 'Prueba', username: 'pruebas.1.1' },
-];
 
 // 	setUsers(users.filter(user => user.id !== id))
 // }

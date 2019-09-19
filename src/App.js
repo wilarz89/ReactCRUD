@@ -39,7 +39,7 @@ const App = () => {
                                 path="/list"
                                 component={UserTable}
                             />
-                             <Route
+                            <Route
                                 path="/edit/:id"
                                 component={EditUserForm}
                             />
