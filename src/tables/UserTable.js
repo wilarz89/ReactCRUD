@@ -1,13 +1,7 @@
 import React from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
-import {
-    BrowserRouter as Router,
-    Route,
-    Link,
-} from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
-import EditUserForm from '../forms/EditUserForm';
+import { BrowserRouter as Link } from 'react-router-dom';
 import { wrapComponentWithState, usersData } from '../state';
 
 const columns = [
