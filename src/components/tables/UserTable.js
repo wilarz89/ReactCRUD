@@ -1,12 +1,9 @@
 import React from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
-import {
-    BrowserRouter as 
-    Router,
-    Link,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 import { wrapComponentWithState, usersData } from '../../state';
+import { injectState } from 'freactal';
 
 const columns = [
     {
@@ -50,12 +47,18 @@ const columns = [
     },
 ];
 
-const UserTable = props => {
+const UserTable = injectState(({ state, effects }) => {
+    const onSubmit = data => {
+        console.log(state);
+
+        return effects.setUsers(data);
+    };
+
     return (
         <div style={{ padding: '50px' }}>
             <ReactTable data={usersData} columns={columns} />
         </div>
     );
-};
+});
 
-export default wrapComponentWithState(UserTable);
+export default UserTable;

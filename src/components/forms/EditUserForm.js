@@ -16,7 +16,7 @@ export const EditUserForm = injectState(({ state, effects }) => {
             initialValues={{ name: '', username: '' }}
             onSubmit={onSubmit}
         >
-            {({ handleSubmit,handleEdit, handleChange, values }) => (
+            {({ handleSubmit, handleEdit, handleChange, values }) => (
                 <Form onSubmit={handleSubmit}>
                     <label>Name</label>
                     <Field type="text" name="name" />
