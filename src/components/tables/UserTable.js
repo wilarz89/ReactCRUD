@@ -56,7 +56,8 @@ const UserTable = injectState(({ state, effects }) => {
 
     return (
         <div style={{ padding: '50px' }}>
-            <ReactTable data={usersData} columns={columns} />
+            <ReactTable
+             onSubmit={onSubmit} data={usersData} columns={columns} />
         </div>
     );
 });

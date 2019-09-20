@@ -1,4 +1,15 @@
 .App {
-  font-family: sans-serif;
-  text-align: center;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.container {
+    font-family: sans-serif;
+    color: blue;
+    background: whitesmoke;
+}
+
+button {
+    color: beige;
+    background: blue;
 }
