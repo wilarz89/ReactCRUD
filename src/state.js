@@ -6,11 +6,12 @@ export let usersData = [
     { id: 3, name: 'Prueba', username: 'pruebas.1.1' },
 ];
 
-// Setting state
+// provides state to be consumed
 
 export const wrapComponentWithState = provideState({
     initialState: () => ({ usersData: {} }),
     effects: {
+        // sets users in table after add
         setUsers: (effects, user) => state => {
             user.id = usersData.length + 1;
             let data = [...usersData, { ...user }];
@@ -21,7 +22,7 @@ export const wrapComponentWithState = provideState({
                 usersData: { user },
             });
         },
-
+        // sets the selected user in the table
         setCurrentUser: (effects, user) => state => {
             console.log('state', state);
 
@@ -30,13 +31,16 @@ export const wrapComponentWithState = provideState({
                 currentUser: { user },
             });
         },
-        setEditing: (effects, edit) => state =>
-            Object.assign({}, state, { editing: edit }),
+        // changes user
+        setEditing: (effects, edit) => state => {
+            Object.assign({}, state, { editing: edit });
+        },
+        // delete user
+        handleDelete: (effects, delUser) => state => {
+            Object.assign({}, state, { deleting: delUser });
+        },
     },
 });
-
-// 	setUsers(users.filter(user => user.id !== id))
-// }
 
 // const updateUser = (id, updatedUser) => {
 // 	setEditing(false)

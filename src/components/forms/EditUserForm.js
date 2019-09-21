@@ -4,7 +4,7 @@ import { injectState } from 'freactal';
 
 export const EditUserForm = injectState(({ state, effects }) => {
     const onSubmit = data => {
-        console.log(state);
+        console.log(state,"===>",data);
         return effects.setCurrentUser(data);
     };
     const onCLick = data => {
@@ -15,6 +15,7 @@ export const EditUserForm = injectState(({ state, effects }) => {
         <Formik
             initialValues={{ name: '', username: '' }}
             onSubmit={onSubmit}
+            onCLick={onCLick}
         >
             {({ handleSubmit, handleEdit, handleChange, values }) => (
                 <Form onSubmit={handleSubmit}>
@@ -26,6 +27,7 @@ export const EditUserForm = injectState(({ state, effects }) => {
                     <button
                         onClick={() => effects.setEditing(false)}
                         className="button muted-button"
+                        type="submit"
                     >
                         Cancel
                     </button>{' '}

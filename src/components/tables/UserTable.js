@@ -2,7 +2,7 @@ import React from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
-import { wrapComponentWithState, usersData } from '../../state';
+import { usersData, handleEdit, handleDelete } from '../../state';
 import { injectState } from 'freactal';
 
 const columns = [
@@ -29,11 +29,11 @@ const columns = [
         Header: 'Edit',
         Cell: row => (
             <div>
-                <li>
+                <button onClick={() => handleEdit(row.original)}>
                     <Link to="/edit/:id" className="link">
                         Editar
                     </Link>
-                </li>
+                </button>
             </div>
         ),
     },
@@ -41,7 +41,10 @@ const columns = [
         Header: 'Delete',
         Cell: row => (
             <div>
-                <button>Delete</button>
+                <button onClick={() => handleDelete(row.original)}>
+                    {' '}
+                    Delete
+                </button>
             </div>
         ),
     },
@@ -57,7 +60,11 @@ const UserTable = injectState(({ state, effects }) => {
     return (
         <div style={{ padding: '50px' }}>
             <ReactTable
-             onSubmit={onSubmit} data={usersData} columns={columns} />
+                onSubmit={handleEdit}
+                onClick={handleDelete}
+                data={usersData}
+                columns={columns}
+            />
         </div>
     );
 });
