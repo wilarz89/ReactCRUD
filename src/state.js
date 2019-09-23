@@ -22,15 +22,7 @@ export const wrapComponentWithState = provideState({
                 usersData: { user },
             });
         },
-        // sets the selected user in the table
-        setCurrentUser: (effects, user) => state => {
-            console.log('state', state);
-
-            return Object.assign({}, state, {
-                ...state,
-                currentUser: { user },
-            });
-        },
+     
         // changes user
         handleEdit: (effects, edit) => state => {
             edit.id = usersData.length + 1;
