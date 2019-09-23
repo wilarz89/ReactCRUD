@@ -1,9 +1,9 @@
 import { provideState } from 'freactal';
 
 export let usersData = [
-    { id: 1, name: 'Wilson', username: 'wilarz89' },
-    { id: 2, name: 'Testing', username: 'testaccount' },
-    { id: 3, name: 'Prueba', username: 'pruebas.1.1' },
+    { id: '1', name: 'Wilson', username: 'wilarz89' },
+    { id: '2', name: 'Testing', username: 'testaccount' },
+    { id: '3', name: 'Prueba', username: 'pruebas.1.1' },
 ];
 
 // provides state to be consumed
@@ -32,8 +32,15 @@ export const wrapComponentWithState = provideState({
             });
         },
         // changes user
-        setEditing: (effects, edit) => state => {
-            Object.assign({}, state, { editing: edit });
+        handleEdit: (effects, edit) => state => {
+            edit.id = usersData.length + 1;
+            let data = [...usersData, { ...edit }];
+            usersData = data;
+            console.log(usersData);
+            Object.assign({}, state, {
+                ...state,
+                usersData: { edit },
+            });
         },
         // delete user
         handleDelete: (effects, delUser) => state => {
@@ -41,15 +48,3 @@ export const wrapComponentWithState = provideState({
         },
     },
 });
-
-// const updateUser = (id, updatedUser) => {
-// 	setEditing(false)
-
-// 	setUsers(users.map(user => (user.id === id ? updatedUser : user)))
-// }
-
-// const editRow = user => {
-// 	setEditing(true)
-
-// 	setCurrentUser({ id: user.id, name: user.name, username: user.username })
-// }

@@ -23,12 +23,9 @@ const App = () => {
                             <Link to="/add" className="link">
                                 <h2>Add user</h2>
                             </Link>
-                            <div className="flex-large">
-                                <Link to="/list" className="list">
-                                    {' '}
-                                    <h2>View users</h2>
-                                </Link>
-                            </div>
+                            <Link to="/list" className="list">
+                                <h2>View users</h2>
+                            </Link>
                         </Fragment>
                         <Switch>
                             <Route
