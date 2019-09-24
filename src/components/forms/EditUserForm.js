@@ -8,7 +8,7 @@ export const EditUserForm = injectState(
         let userNum = match.params.id;
         let user = usersData.find(user => user.id === userNum);
 
-        const onEdit = data => {
+        const onSubmit = data => {
             return effects.handleEdit(data);
         };
 
@@ -18,24 +18,21 @@ export const EditUserForm = injectState(
                     name: user.name,
                     username: user.username,
                 }}
-                onSubmit={onEdit}
+                onSubmit={onSubmit}
             >
                 {({
                     handleSubmit,
-                    handleEdit,
-                    handleChange,
-                    values,
                 }) => (
-                    <Form onEdit={handleSubmit}>
+                    <Form onSubmit={handleSubmit}>
                         <label>Name</label>
                         <Field type="text" name="name" />
                         <label>Username</label>
                         <Field type="text" name="username" />
-                        <button>Edit user</button>
+                        <button type="submit">Edit user</button>
                         <button
                             onClick={() => effects.setEditing(false)}
                             className="button muted-button"
-                            type="submit"
+                            type="button"
                         >
                             Cancel
                         </button>

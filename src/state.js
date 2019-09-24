@@ -1,4 +1,4 @@
-import { provideState } from 'freactal';
+import { provideState, update } from 'freactal';
 
 export let usersData = [
     { id: '1', name: 'Wilson', username: 'wilarz89' },
@@ -22,21 +22,11 @@ export const wrapComponentWithState = provideState({
                 usersData: { user },
             });
         },
-     
+
         // changes user
-        handleEdit: (effects, edit) => state => {
-            edit.id = usersData.length + 1;
-            let data = [...usersData, { ...edit }];
-            usersData = data;
-            console.log(usersData);
-            Object.assign({}, state, {
-                ...state,
-                usersData: { edit },
-            });
-        },
+        handleEdit: update((state, user) => ({ updateUser: user })),
+
         // delete user
-        handleDelete: (effects, delUser) => state => {
-            Object.assign({}, state, { deleting: delUser });
-        },
+        handleDelete: update( usersData.id =null )
     },
 });

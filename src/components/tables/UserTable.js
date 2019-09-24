@@ -45,20 +45,8 @@ const columns = [
     },
     {
         Header: 'Edit',
-        Cell: row => (
-            <div>
-                {usersData.map(user => (
-                    <Link
-                        key={user.id}
-                        to={{ pathname: `/edit/${user.id}` }}
-                        id={user}
-                        className="link"
-                    >
-                        Editar
-                    </Link>
-                ))}
-            </div>
-        ),
+        Cell: ({ row }) => (<Link to={{ pathname: `/edit/${row.id}` }}>Editar </Link>)
+    
     },
 ];
 

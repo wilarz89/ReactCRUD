@@ -1,7 +1,6 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { injectState } from 'freactal';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 const AddUserForm = injectState(({ state, effects }) => {
     const onSubmit = data => {
@@ -21,9 +20,7 @@ const AddUserForm = injectState(({ state, effects }) => {
                     <Field type="text" name="name" />
                     <label>Username</label>
                     <Field type="text" name="username" />
-                    <button type="submit">
-                        <Link to="/list">Add new user</Link>
-                    </button>
+                    <button type="submit">Add new user</button>
                 </Form>
             )}
         </Formik>
