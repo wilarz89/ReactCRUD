@@ -17,12 +17,11 @@ export const EditUserForm = injectState(
                 initialValues={{
                     name: user.name,
                     username: user.username,
+                    id: userNum,
                 }}
                 onSubmit={onSubmit}
             >
-                {({
-                    handleSubmit,
-                }) => (
+                {({ handleSubmit }) => (
                     <Form onSubmit={handleSubmit}>
                         <label>Name</label>
                         <Field type="text" name="name" />
@@ -30,7 +29,7 @@ export const EditUserForm = injectState(
                         <Field type="text" name="username" />
                         <button type="submit">Edit user</button>
                         <button
-                            onClick={() => effects.setEditing(false)}
+                            onSubmit={() => effects.setEditing(false)}
                             className="button muted-button"
                             type="button"
                         >

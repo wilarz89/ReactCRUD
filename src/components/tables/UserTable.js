@@ -45,8 +45,9 @@ const columns = [
     },
     {
         Header: 'Edit',
-        Cell: ({ row }) => (<Link to={{ pathname: `/edit/${row.id}` }}>Editar </Link>)
-    
+        Cell: ({ row }) => (
+            <Link to={{ pathname: `/edit/${row.id}` }}>Editar </Link>
+        ),
     },
 ];
 

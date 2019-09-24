@@ -24,9 +24,18 @@ export const wrapComponentWithState = provideState({
         },
 
         // changes user
-        handleEdit: update((state, user) => ({ updateUser: user })),
+        handleEdit: (effects, user) => state => {
+            let userNum = user.id;
+            let userOld = usersData.find(usr => usr.id === userNum);
+            userOld = {
+                id: user.id,
+                name: user.name,
+                username: user.username,
+            };
+            usersData[userNum] = userOld;
+        },
 
         // delete user
-        handleDelete: update( usersData.id =null )
+        handleDelete: update((usersData.id = null)),
     },
 });
