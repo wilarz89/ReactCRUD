@@ -1,4 +1,4 @@
-import { provideState, update } from 'freactal';
+import { provideState } from 'freactal';
 
 export let usersData = [
     { id: '1', name: 'Wilson', username: 'wilarz89' },
@@ -28,14 +28,23 @@ export const wrapComponentWithState = provideState({
             let userNum = user.id;
             let userOld = usersData.find(usr => usr.id === userNum);
             userOld = {
+                ...userOld,
                 id: user.id,
                 name: user.name,
                 username: user.username,
             };
+           
             usersData[userNum] = userOld;
+            console.log("edit user",usersData)
         },
 
         // delete user
-        handleDelete: update((usersData.id = null)),
+        handleDelete: (effects, user) => state => {
+            let userNum = user.id;
+            let userOld = usersData.find(usr => usr.id === userNum);
+            usersData[userNum] = null;
+            console.log("edit user",usersData)
+
+        },
     },
 });

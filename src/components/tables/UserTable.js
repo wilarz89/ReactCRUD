@@ -49,6 +49,12 @@ const columns = [
             <Link to={{ pathname: `/edit/${row.id}` }}>Editar </Link>
         ),
     },
+    {
+        Header: 'Delete',
+        Cell: ({ row }) => (
+            <Link to={{ pathname: `/delete/${row.id}` }}>Delete </Link>
+        ),
+    },
 ];
 
 export default UserTable;

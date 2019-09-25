@@ -3,14 +3,15 @@ import { Formik, Form, Field } from 'formik';
 import { injectState } from 'freactal';
 import { usersData } from '../../state';
 import { Link } from 'react-router-dom';
-export const EditUserForm = injectState(
+export const DeleteUserForm = injectState(
     ({ state, effects, match }) => {
         let userNum = match.params.id;
         let user = usersData.find(user => user.id === userNum);
 
         const onSubmit = data => {
-            return effects.handleEdit(data);
+            return effects.handleDelete(data);
         };
+
         return (
             <Formik
                 initialValues={{
@@ -26,9 +27,9 @@ export const EditUserForm = injectState(
                         <Field type="text" name="name" />
                         <label>Username</label>
                         <Field type="text" name="username" />
-                        <Link to="/list">
-                            <button type="submit">Edit user</button>
-                        </Link>
+                        {/* <Link to="/list"> */}
+                            <button type="submit">Delete user</button>
+                        {/* </Link> */}
 
                         <button
                             onSubmit={() => effects.setEditing(false)}
@@ -44,4 +45,4 @@ export const EditUserForm = injectState(
     },
 );
 
-export default EditUserForm;
+export default DeleteUserForm;

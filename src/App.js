@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom';
 import { wrapComponentWithState } from './state';
 import EditUserForm from './components/forms/EditUserForm';
+import { DeleteUserForm } from './components/forms/DeleteUserForm';
 
 const App = () => {
     return (
@@ -39,6 +40,10 @@ const App = () => {
                             <Route
                                 path="/edit/:id"
                                 component={EditUserForm}
+                            />
+                            <Route
+                                path="/delete/:id"
+                                component={DeleteUserForm}
                             />
                         </Switch>
                     </Router>
