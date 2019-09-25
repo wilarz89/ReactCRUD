@@ -11,12 +11,14 @@ export const wrapComponentWithState = provideState({
         
             return Object.assign({}, state, {
                 ...state,
-                usersData: [ ...state.usersData, {...user,id:state.usersData.length} ],
+                usersData: [ ...state.usersData, {...user,id:state.usersData.length+1} ],
             });
         },
 
         // changes user
         handleEdit: (effects, user) => state => {
+          console.log(user,state)
+
             let userNum = user.id;
             let userOld = usersData.find(usr => usr.id === userNum);
             userOld = {
@@ -32,6 +34,8 @@ export const wrapComponentWithState = provideState({
 
         // delete user
         handleDelete: (effects, user) => state => {
+          console.log(user,state)
+
             let userNum = user.id;
             let userOld = usersData.find(usr => usr.id === userNum);
             usersData[userNum] = null;

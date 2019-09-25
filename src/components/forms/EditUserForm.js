@@ -5,10 +5,9 @@ import { Link } from 'react-router-dom';
 export const EditUserForm = injectState(
     
     ({ state, effects, match }) => {
-        let usersData = state.usersData
-
-        let userNum = match.params.id;
-        let user = usersData.find(user => user.id === userNum);
+        let {usersData}=state
+        console.log(usersData)
+        usersData= usersData[0]
 
         const onSubmit = data => {
             return effects.handleEdit(data);
@@ -16,9 +15,9 @@ export const EditUserForm = injectState(
         return (
             <Formik
                 initialValues={{
-                    name: user.name,
-                    username: user.username,
-                    id: userNum,
+                    name: usersData.name,
+                    username: usersData.username,
+                    id: usersData.id,
                 }}
                 onSubmit={onSubmit}
             >
