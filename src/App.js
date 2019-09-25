@@ -11,6 +11,10 @@ import {
 import { wrapComponentWithState } from './state';
 import EditUserForm from './components/forms/EditUserForm';
 import { DeleteUserForm } from './components/forms/DeleteUserForm';
+import ApolloClient from 'apollo-boost';
+const client = new ApolloClient({
+  uri:"localhost/4000"
+})
 
 const App = () => {
     return (

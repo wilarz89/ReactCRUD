@@ -4,6 +4,7 @@ import { injectState } from 'freactal';
 import { Link } from 'react-router-dom';
 
 const AddUserForm = injectState(({ state, effects }) => {
+    
     const onSubmit = data => {
         console.log(state);
 
@@ -21,9 +22,9 @@ const AddUserForm = injectState(({ state, effects }) => {
                     <Field type="text" name="name" />
                     <label>Username</label>
                     <Field type="text" name="username" />
-                    <Link to="/list" className="submit">
+                    {/* <Link to="/list" className="submit"> */}
                         <button type="submit">Add new user</button>
-                    </Link>
+                    {/* </Link> */}
                 </Form>
             )}
         </Formik>

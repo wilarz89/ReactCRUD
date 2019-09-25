@@ -1,10 +1,10 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { injectState } from 'freactal';
-import { usersData } from '../../state';
 import { Link } from 'react-router-dom';
 export const DeleteUserForm = injectState(
     ({ state, effects, match }) => {
+        let usersData = state.usersData
         let userNum = match.params.id;
         let user = usersData.find(user => user.id === userNum);
 

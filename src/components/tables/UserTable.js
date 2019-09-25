@@ -2,20 +2,21 @@ import React from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
-import { usersData } from '../../state';
+// import { usersData } from '../../state';
 import { injectState } from 'freactal';
 
 const UserTable = injectState(({ state, effects }) => {
-    const handleEdit = data => {
+    const {usersData}=state
+    const handleUsers = data => {
         console.log(state);
 
-        return effects.handleEdit(data);
+        return effects.handleUsers(data);
     };
 
     return (
         <div style={{ padding: '50px' }}>
             <ReactTable
-                onSubmit={handleEdit}
+                onSubmit={handleUsers}
                 data={usersData}
                 columns={columns}
             />
