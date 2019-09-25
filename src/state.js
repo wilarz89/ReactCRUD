@@ -1,45 +1,33 @@
-import { provideState } from 'freactal';
+import { provideState, update } from 'freactal';
 
 // provides state to be consumed
-let usersData = [];
 export const wrapComponentWithState = provideState({
-    initialState: () => ({usersData :[]}),
+    initialState: () => ({ usersData: [{ id: '1', name: 'Wilson', username: 'wilarz89' },
+    { id: '2', name: 'Testing', username: 'testaccount' },
+    { id: '3', name: 'Prueba', username: 'pruebas.1.1' }] }),
     effects: {
         // sets users in table after add
         setUsers: (effects, user) => state => {
-            console.log(user,state)
-        
+            console.log(user, state);
+
             return Object.assign({}, state, {
                 ...state,
-                usersData: [ ...state.usersData, {...user,id:state.usersData.length+1} ],
+                usersData: [
+                    ...state.usersData,
+                    { ...user, id: state.usersData.length + 1 },
+                ],
             });
         },
-
-        // changes user
-        handleEdit: (effects, user) => state => {
-          console.log(user,state)
-
-            let userNum = user.id;
-            let userOld = usersData.find(usr => usr.id === userNum);
-            userOld = {
-                ...userOld,
-                id: user.id,
-                name: user.name,
-                username: user.username,
-            };
-
-            usersData[userNum] = userOld;
-            console.log('edit user', usersData);
-        },
-
+        // Edit user
+        handleEdit: update(
+            (state, value) => (
+                console.log(state, 'val', value),
+                {
+                    user: value,
+                }
+            ),
+        ),
         // delete user
-        handleDelete: (effects, user) => state => {
-          console.log(user,state)
-
-            let userNum = user.id;
-            let userOld = usersData.find(usr => usr.id === userNum);
-            usersData[userNum] = null;
-            console.log('edit user', usersData);
-        },
+        handleDelete: update({ usersData: {} }),
     },
 });

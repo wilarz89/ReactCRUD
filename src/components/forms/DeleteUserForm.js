@@ -1,23 +1,22 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
-import { injectState } from 'freactal';
+import { injectState, handleDelete } from 'freactal';
 import { Link } from 'react-router-dom';
 export const DeleteUserForm = injectState(
     ({ state, effects, match }) => {
-        let usersData = state.usersData
-        let userNum = match.params.id;
-        let user = usersData.find(user => user.id === userNum);
+        let { usersData } = state;
+        console.log(usersData);
+        usersData = usersData[match.params.id-1];
 
         const onSubmit = data => {
             return effects.handleDelete(data);
         };
-
         return (
             <Formik
                 initialValues={{
-                    name: user.name,
-                    username: user.username,
-                    id: userNum,
+                    name: usersData.name,
+                    username: usersData.username,
+                    id: usersData.id,
                 }}
                 onSubmit={onSubmit}
             >
@@ -28,7 +27,7 @@ export const DeleteUserForm = injectState(
                         <label>Username</label>
                         <Field type="text" name="username" />
                         {/* <Link to="/list"> */}
-                            <button type="submit">Delete user</button>
+                        <button type="submit">Delete user</button>
                         {/* </Link> */}
 
                         <button
