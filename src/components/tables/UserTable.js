@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Link } from 'react-router-dom';
 import { injectState } from 'freactal';
 
 const UserTable = injectState(({ state, effects }) => {
-    const {usersData}=state
+    const { usersData } = state;
     const handleUsers = data => {
         console.log(state);
 
@@ -53,7 +53,9 @@ const columns = [
     {
         Header: 'Delete',
         Cell: ({ row }) => (
-            <Link to={{ pathname: `/delete/${row.id}` }}>Delete </Link>
+            <Link to={{ pathname: `/delete/${row.id}` }}>
+                Delete{' '}
+            </Link>
         ),
     },
 ];

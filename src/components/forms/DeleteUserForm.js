@@ -1,15 +1,20 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
-import { injectState, handleDelete } from 'freactal';
-import { Link } from 'react-router-dom';
+import { injectState } from 'freactal';
+import { Redirect } from 'react-router-dom';
+
 export const DeleteUserForm = injectState(
     ({ state, effects, match }) => {
         let { usersData } = state;
         console.log(usersData);
-        usersData = usersData[match.params.id-1];
+        usersData = usersData[match.params.id - 1];
 
         const onSubmit = data => {
-            return effects.handleDelete(data);
+            if (data.name !== '' || data.username !== '') {
+                effects.handleDelete(data);
+                console.log('redirect');
+                return <Redirect to="/list" />;
+            }
         };
         return (
             <Formik

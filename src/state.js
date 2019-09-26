@@ -1,10 +1,14 @@
-import { provideState, update } from 'freactal';
+import { provideState } from 'freactal';
 
 // provides state to be consumed
 export const wrapComponentWithState = provideState({
-    initialState: () => ({ usersData: [{ id: '1', name: 'Wilson', username: 'wilarz89' },
-    { id: '2', name: 'Testing', username: 'testaccount' },
-    { id: '3', name: 'Prueba', username: 'pruebas.1.1' }] }),
+    initialState: () => ({
+        usersData: [
+            { id: '1', name: 'Wilson', username: 'wilarz89' },
+            { id: '2', name: 'Testing', username: 'testaccount' },
+            { id: '3', name: 'Prueba', username: 'pruebas.1.1' },
+        ],
+    }),
     effects: {
         // sets users in table after add
         setUsers: (effects, user) => state => {
@@ -18,16 +22,35 @@ export const wrapComponentWithState = provideState({
                 ],
             });
         },
-        // Edit user
-        handleEdit: update(
-            (state, value) => (
-                console.log(state, 'val', value),
+
+        handleEdit: (effects, user) => state => {
+            let id = user.id - 1;
+            let oldUser = state.usersData[id];
+            console.log(user, oldUser, '=>', state);
+
+            return Object.assign(
+                {},
+                state,
                 {
-                    user: value,
-                }
-            ),
-        ),
+                    ...oldUser,
+                    id: user.id,
+                    name: user.name,
+                    username: user.username,
+                },
+                console.log('state=>', state),
+            );
+        },
         // delete user
-        handleDelete: update({ usersData: {} }),
+        handleDelete: (effects, user) => state => {
+            let id = user.id - 1;
+            let oldUser = state.usersData[id];
+
+            return Object.assign({}, state, {
+                ...oldUser,
+                id: null,
+                name: null,
+                username: null,
+            });
+        },
     },
 });
